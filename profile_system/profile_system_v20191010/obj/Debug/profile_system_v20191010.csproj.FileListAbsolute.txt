@@ -12,3 +12,9 @@ C:\Users\ja3237\Documents\GitHub\Profile_B4\profile_system\profile_system_v20191
 C:\Users\ja3237\Documents\GitHub\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.csproj.CoreCompileInputs.cache
 C:\Users\ja3237\Documents\GitHub\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.exe
 C:\Users\ja3237\Documents\GitHub\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.pdb
+D:\Github\Profile_B4\profile_system\profile_system_v20191010\bin\Debug\profile_system_v20191010.exe.config
+D:\Github\Profile_B4\profile_system\profile_system_v20191010\bin\Debug\profile_system_v20191010.exe
+D:\Github\Profile_B4\profile_system\profile_system_v20191010\bin\Debug\profile_system_v20191010.pdb
+D:\Github\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.csprojAssemblyReference.cache
+D:\Github\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.exe
+D:\Github\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.pdb

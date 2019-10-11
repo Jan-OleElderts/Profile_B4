@@ -182,8 +182,8 @@ namespace profile_system_v20191010
             Double Querschnitt = KastenHa * KastenBa - KastenHi * KastenBi;
             Double Volumen = Querschnitt * KastenT;
             Double Gewicht = Volumen * Dichte;
-            Double Flaechentraegheitsmomenty = (KastenBa * Math.Sqrt(KastenHa)*KastenHa - KastenBi * Math.Sqrt(KastenHi) * KastenHi)/12;
-            Double Flaechentraegheitsmomentz = (KastenHa * Math.Sqrt(KastenBa) * KastenBa - KastenHi * Math.Sqrt(KastenBi) * KastenBi) / 12;
+            Double Flaechentraegheitsmomenty = (KastenBa * Math.Pow(KastenHa,3) - KastenBi * Math.Pow(KastenHi,3) * KastenHi)/12;
+            Double Flaechentraegheitsmomentz = (KastenHa * Math.Pow(KastenBa,3) - KastenHi * Math.Pow(KastenBi,3) * KastenBi)/12;
 
             // Ausgabe der Berechneten Werte
             Console.WriteLine($"Querschnitt:  {Querschnitt} m^2");
@@ -256,7 +256,7 @@ namespace profile_system_v20191010
             Double Querschnitt = ITrägerHa * ITrägerBa - ITrägerHi * ITrägerBi;
             Double Volumen = Querschnitt * ITrägerT;
             Double Gewicht = Volumen * Dichte;
-            Double Flaechentraegheitsmomenty = (ITrägerBa * Math.Sqrt(ITrägerHa) * ITrägerHa - ITrägerBi * Math.Sqrt(ITrägerHi) * ITrägerHi) / 12;
+            Double Flaechentraegheitsmomenty = (ITrägerBa * Math.Pow(ITrägerHa,3) - ITrägerBi * Math.Pow(ITrägerHi,3)/ 12;
             
             // Ausgabe der Berechneten Werte
             Console.WriteLine($"Querschnitt:  {Querschnitt} m^2");
@@ -295,7 +295,7 @@ namespace profile_system_v20191010
             Double Querschnitt = UProfilHa * UProfilBa - UProfilHi * UProfilBi;
             Double Volumen = Querschnitt * UProfilT;
             Double Gewicht = Volumen * Dichte;
-            Double Flaechentraegheitsmomenty = (UProfilBa * Math.Sqrt(UProfilHa) * UProfilHa - UProfilBi * Math.Sqrt(UProfilHi) * UProfilHi) / 12;
+            Double Flaechentraegheitsmomenty = (UProfilBa * Math.Pow(UProfilHa,3)- UProfilBi * Math.Pow(UProfilHi,3)) / 12;
             
             // Ausgabe der Berechneten Werte
             Console.WriteLine($"Querschnitt:  {Querschnitt} m^2");

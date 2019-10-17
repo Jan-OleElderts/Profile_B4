@@ -52,22 +52,71 @@ namespace profile_system_v20191010
 
         static void Rechteck() 
         {
+            
             //Abfrage der Werte und umwandeln von String in Double 
             Console.WriteLine("Bitte geben Sie die Höhe des Rechteckprofils in Metern ein und bestätigen Sie mit 'Enter'.");
-            String StringRechteckH = Console.ReadLine();
-            Double RechteckH = Convert.ToDouble(StringRechteckH);
+            String StringRechteckHTest = Console.ReadLine();
+            Double RechteckHTest = Convert.ToDouble(StringRechteckHTest);
+            double RechteckH;
+
+            if (RechteckHTest <= 0)
+            {
+                Console.WriteLine("Fehler: Ungültige Eingabe. Bitte geben Sie einen gültigen Wert ein.");
+                String StringRechteckH = Console.ReadLine();
+                RechteckH = Convert.ToDouble(StringRechteckH);
+            }
+            else
+            {
+               RechteckH = RechteckHTest;
+            }
 
             Console.WriteLine("Bitte geben Sie die Breite des Rechteckprofils in Metern ein und bestätigen Sie mit 'Enter'.");
-            String StringRechteckB = Console.ReadLine();
-            Double RechteckB = Convert.ToDouble(StringRechteckB);
+            String StringRechteckBTest = Console.ReadLine();
+            Double RechteckBTest = Convert.ToDouble(StringRechteckBTest);
+            Double RechteckB;
+
+            if (RechteckBTest <= 0)
+            {
+                Console.WriteLine("Fehler: Ungültige Eingabe. Bitte geben Sie einen gültigen Wert ein.");
+                String StringRechteckB = Console.ReadLine();
+                RechteckB = Convert.ToDouble(StringRechteckB);
+            }
+            else
+            {
+                RechteckB = RechteckBTest;
+            }
 
             Console.WriteLine("Bitte geben Sie die Tiefe des Rechteckprofils in Metern ein und bestätigen Sie mit 'Enter'.");
-            String StringRechteckT = Console.ReadLine();
-            Double RechteckT = Convert.ToDouble(StringRechteckT);
+            String StringRechteckTTest = Console.ReadLine();
+            Double RechteckTTest = Convert.ToDouble(StringRechteckTTest);
+            Double RechteckT;
+
+            if (RechteckTTest <= 0)
+            {
+                Console.WriteLine("Fehler: Ungültige Eingabe. Bitte geben Sie einen gültigen Wert ein.");
+                String StringRechteckT = Console.ReadLine();
+                RechteckT = Convert.ToDouble(StringRechteckT);
+            }
+            else
+            {
+                RechteckT = RechteckTTest;
+            }
 
             Console.WriteLine("Bitte geben Sie die Dichte des gewünschten Materials des Rechteckprofils in Kg/m^3 ein und bestätigen Sie mit 'Enter'.");
-            String StringDichte = Console.ReadLine();
-            Double Dichte = Convert.ToDouble(StringDichte);
+            String StringDichteTest = Console.ReadLine();
+            Double DichteTest = Convert.ToDouble(StringDichteTest);
+            Double Dichte;
+
+            if (DichteTest <= 0)
+            {
+                Console.WriteLine("Fehler: Ungültige Eingabe. Bitte geben Sie einen gültigen Wert ein.");
+                String StringDichte = Console.ReadLine();
+                Dichte = Convert.ToDouble(StringDichte);
+            }
+            else
+            {
+                Dichte = DichteTest;
+            }
 
             //Berechnungen aus Eingabe
             Double Querschnitt = RechteckH * RechteckB;
@@ -256,7 +305,7 @@ namespace profile_system_v20191010
             Double Querschnitt = ITrägerHa * ITrägerBa - ITrägerHi * ITrägerBi;
             Double Volumen = Querschnitt * ITrägerT;
             Double Gewicht = Volumen * Dichte;
-            Double Flaechentraegheitsmomenty = (ITrägerBa * Math.Pow(ITrägerHa,3) - ITrägerBi * Math.Pow(ITrägerHi,3)/ 12;
+            Double Flaechentraegheitsmomenty = (ITrägerBa * Math.Pow(ITrägerHa, 3) - ITrägerBi * Math.Pow(ITrägerHi, 3) / 12 );
             
             // Ausgabe der Berechneten Werte
             Console.WriteLine($"Querschnitt:  {Querschnitt} m^2");

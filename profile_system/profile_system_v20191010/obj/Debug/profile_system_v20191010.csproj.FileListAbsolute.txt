@@ -18,3 +18,10 @@ D:\Github\Profile_B4\profile_system\profile_system_v20191010\bin\Debug\profile_s
 D:\Github\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.csprojAssemblyReference.cache
 D:\Github\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.exe
 D:\Github\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.pdb
+C:\Users\ja3237\source\repos\Jan-OleElderts\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.csprojAssemblyReference.cache
+C:\Users\ja3237\source\repos\Jan-OleElderts\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.csproj.CoreCompileInputs.cache
+C:\Users\ja3237\source\repos\Jan-OleElderts\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.exe
+C:\Users\ja3237\source\repos\Jan-OleElderts\Profile_B4\profile_system\profile_system_v20191010\obj\Debug\profile_system_v20191010.pdb
+C:\Users\ja3237\source\repos\Jan-OleElderts\Profile_B4\profile_system\profile_system_v20191010\bin\Debug\profile_system_v20191010.exe.config
+C:\Users\ja3237\source\repos\Jan-OleElderts\Profile_B4\profile_system\profile_system_v20191010\bin\Debug\profile_system_v20191010.exe
+C:\Users\ja3237\source\repos\Jan-OleElderts\Profile_B4\profile_system\profile_system_v20191010\bin\Debug\profile_system_v20191010.pdb

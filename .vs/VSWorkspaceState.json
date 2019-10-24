@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\profile_system"
+    "\\profile_system",
+    "\\profile_system\\profile_system_v20191010"
   ],
-  "SelectedNode": "\\profile_system\\profile_system.sln",
+  "SelectedNode": "\\profile_system\\Berechnung des Rechteckprofils",
   "PreviewInSolutionExplorer": false
 }

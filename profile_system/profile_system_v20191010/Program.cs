@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PresentationFramework.dll;
 
 namespace profile_system_v20191010
 {
@@ -17,6 +18,9 @@ namespace profile_system_v20191010
     {
         static void Main(string[] args)
         {
+            Console.WindowHeight=30; // legt die Höhe vom Konsolenfenster fest 
+            Console.WindowWidth=125; // legt die Breite vom Kosolenfenster fest 
+            Console.SetWindowPosition(0, 0);
             //Vorgeplänkel und Eingabeabfrage zum Recheckprofil
             Console.WriteLine("Willkommen zu Ihrem persöhnlichen Profilberechnungssystem.");
             Console.WriteLine("Bitte geben Sie eine der folgenden Profile ein: Rechteck, Dreieck, Kreisring, Kastenprofil, T-Träger, I-Träger, U-Profil");

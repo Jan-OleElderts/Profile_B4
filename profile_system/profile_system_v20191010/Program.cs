@@ -22,8 +22,11 @@ namespace profile_system_v20191010
             Console.WindowWidth=125; // legt die Breite vom Kosolenfenster fest 
             Console.SetWindowPosition(0, 0);
             //Vorgeplänkel und Eingabeabfrage zum Recheckprofil
+
+
             Console.WriteLine("Willkommen zu Ihrem persöhnlichen Profilberechnungssystem.");
             Console.WriteLine("Bitte geben Sie eine der folgenden Profile ein: Rechteck, Dreieck, Kreisring, Kastenprofil, T-Träger, I-Träger, U-Profil");
+
 
             string Auswahl = Console.ReadLine();
 

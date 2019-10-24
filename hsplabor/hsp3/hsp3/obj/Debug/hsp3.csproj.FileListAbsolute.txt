@@ -1,0 +1,7 @@
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp3\hsp3\bin\Debug\hsp3.exe.config
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp3\hsp3\bin\Debug\hsp3.exe
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp3\hsp3\bin\Debug\hsp3.pdb
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp3\hsp3\obj\Debug\hsp3.csprojAssemblyReference.cache
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp3\hsp3\obj\Debug\hsp3.csproj.CoreCompileInputs.cache
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp3\hsp3\obj\Debug\hsp3.exe
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp3\hsp3\obj\Debug\hsp3.pdb

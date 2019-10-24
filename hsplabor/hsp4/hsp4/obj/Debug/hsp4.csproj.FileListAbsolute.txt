@@ -1,0 +1,7 @@
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp4\hsp4\obj\Debug\hsp4.csprojAssemblyReference.cache
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp4\hsp4\obj\Debug\hsp4.csproj.CoreCompileInputs.cache
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp4\hsp4\bin\Debug\hsp4.exe.config
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp4\hsp4\bin\Debug\hsp4.exe
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp4\hsp4\bin\Debug\hsp4.pdb
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp4\hsp4\obj\Debug\hsp4.exe
+C:\Users\xxx\Desktop\新建文件夹 (4)\hsp\hsp4\hsp4\obj\Debug\hsp4.pdb

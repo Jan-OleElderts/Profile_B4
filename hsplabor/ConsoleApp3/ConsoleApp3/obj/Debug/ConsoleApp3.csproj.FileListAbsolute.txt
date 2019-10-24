@@ -1,0 +1,7 @@
+C:\Users\xxx\Desktop\新建文件夹 (4)\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
+C:\Users\xxx\Desktop\新建文件夹 (4)\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe
+C:\Users\xxx\Desktop\新建文件夹 (4)\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
+C:\Users\xxx\Desktop\新建文件夹 (4)\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csprojAssemblyReference.cache
+C:\Users\xxx\Desktop\新建文件夹 (4)\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CoreCompileInputs.cache
+C:\Users\xxx\Desktop\新建文件夹 (4)\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe
+C:\Users\xxx\Desktop\新建文件夹 (4)\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.pdb

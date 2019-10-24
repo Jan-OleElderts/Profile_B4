@@ -18,7 +18,7 @@ namespace profile_system_v20191010
         static void Main(string[] args)
         {
             //Vorgeplänkel und Eingabeabfrage zum Recheckprofil
-            Console.WriteLine("Wilkommen zu Ihrem persöhnlichem Profilgenerierungssystem.");
+            Console.WriteLine("Willkommen zu Ihrem persöhnlichen Profilgenerierungssystem.");
 
             Console.WriteLine("Bitte geben Sie die Höhe des Rechteckprofils ein.");
             String StringRechteckH = Console.ReadLine();

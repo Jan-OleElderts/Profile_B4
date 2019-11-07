@@ -94,5 +94,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Rechteck.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UProfil.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Dreieck.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Halbring.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Kasten.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

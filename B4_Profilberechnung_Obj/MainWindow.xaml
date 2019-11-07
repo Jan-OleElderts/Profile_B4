@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:B4_Profilberechnung_Obj"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Profilberechnung" Height="500" Width="800">
     <Grid>
+
+        <Button  Content="Schließen" HorizontalAlignment="Left" Margin="50,0,0,50" VerticalAlignment="Bottom"  Width="75" Click="Button_Click_Ende"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="50,0,0,100" VerticalAlignment="Bottom" Width="75" Click="Button_Click_Reset"/>
+        <Button x:Name="btnBerechne" Content="Berechne" HorizontalAlignment="Left" Margin="50,0,0,150" VerticalAlignment="Bottom" Width="75" Click="Button_Click_Berechne"/>
+
+        <ListBox x:Name="itmBox"  HorizontalAlignment="Left" Height="200" Margin="50,50,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ListBox_SelectionChanged">
+            <ListBoxItem x:Name="itmRechteck" Content="Rechteck" Selected="ListBoxItem_Selected" Cursor="Hand" FontSize="20"/>
+            <ListBoxItem x:Name="itmKreis" Content="Kreis" Selected="ListBoxItem_Selected" Cursor="Hand" FontSize="20"/>
+            <ListBoxItem x:Name="itmDreieck" Content="Dreieck" Selected="ListBoxItem_Selected" Cursor="Hand" FontSize="20"/>
+            <ListBoxItem x:Name="itmUProfil" Content="U-Profil" Selected="ListBoxItem_Selected" Cursor="Hand" FontSize="20"/>
+            <ListBoxItem x:Name="imtIProfil" Content="I-Profil" Selected="ListBoxItem_Selected" Cursor="Hand" FontSize="20"/>
+        </ListBox>
+
+        <Image Name="imFigur" HorizontalAlignment="Right" Height="200" Margin="0,50,50,0" VerticalAlignment="Top" Width="200" Visibility="Visible"/>
+
+        <!--Hier werden die Textboxen für die Parameter festgelegt -->
+        <TextBox x:Name="txtParameter1" HorizontalAlignment="Left" Height="23" Margin="372,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter2" HorizontalAlignment="Left" Height="23" Margin="372,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter3" HorizontalAlignment="Left" Height="23" Margin="372,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter4" HorizontalAlignment="Left" Height="23" Margin="372,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter5" HorizontalAlignment="Left" Height="23" Margin="372,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter6" HorizontalAlignment="Left" Height="23" Margin="372,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <!--Hier werden die Labels für die Parameter festgelegt -->
+        <Label x:Name="lblParameter1" Content="lbl1" HorizontalAlignment="Left" Margin="278,293,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblParameter2" Content="lbl2" HorizontalAlignment="Left" Margin="278,321,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblParameter3" Content="lbl3" HorizontalAlignment="Left" Margin="278,349,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblParameter4" Content="lbl4" HorizontalAlignment="Left" Margin="278,377,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblParameter5" Content="lbl5" HorizontalAlignment="Left" Margin="278,405,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblParameter6" Content="lbl6" HorizontalAlignment="Left" Margin="278,433,0,0" VerticalAlignment="Top"/>
         
+
+
     </Grid>
 </Window>

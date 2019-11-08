@@ -96,19 +96,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Rechteck.PNG" />
+    <Resource Include="imRechteck.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UProfil.PNG" />
+    <Resource Include="imUProfil.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Dreieck.PNG" />
+    <Resource Include="imDreieck.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Halbring.PNG" />
+    <Resource Include="imKasten.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Kasten.PNG" />
+    <Resource Include="imIProfil.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imKreisring.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="JE.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

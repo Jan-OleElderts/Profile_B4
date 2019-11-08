@@ -5,43 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:B4_Profilberechnung_Obj"
         mc:Ignorable="d"
-        Title="Profilberechnung" Height="500" Width="800" Icon="UProfil.PNG">
+        Title="Profilberechnung" Height="500" Width="800" Icon="JE.ico">
     <Grid>
 
         <Button  Content="Schließen" HorizontalAlignment="Left" Margin="50,0,0,50" VerticalAlignment="Bottom"  Width="75" Click="Button_Click_Ende"/>
         <Button Content="Reset" HorizontalAlignment="Left" Margin="50,0,0,100" VerticalAlignment="Bottom" Width="75" Click="Button_Click_Reset"/>
         <Button x:Name="btnBerechne" Content="Berechne" HorizontalAlignment="Left" Margin="50,0,0,150" VerticalAlignment="Bottom" Width="75" Click="Button_Click_Berechne"/>
 
-        <Image Name="imFigur" HorizontalAlignment="Right" Height="200" Margin="0,50,50,0" VerticalAlignment="Top" Width="200" Visibility="Visible"/>
+        <Image x:Name="imRechteck" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imRechteck.PNG" />
+        <Image x:Name="imDreieck" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imDreieck.PNG" />
+        <Image x:Name="imKreisring" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imKreisring.PNG" />
+        <Image x:Name="imUProfil" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imUProfil.PNG" />
+        <Image x:Name="imKasten" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imKasten.PNG" />
+        <Image x:Name="imIProfil" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imIProfil.PNG" />
 
         <!--Hier werden die Textboxen für die Parameter festgelegt -->
-        <TextBox x:Name="txtParameter1" HorizontalAlignment="Left" Height="23" Margin="372,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtParameter2" HorizontalAlignment="Left" Height="23" Margin="372,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtParameter3" HorizontalAlignment="Left" Height="23" Margin="372,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtParameter4" HorizontalAlignment="Left" Height="23" Margin="372,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtParameter5" HorizontalAlignment="Left" Height="23" Margin="372,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtParameter6" HorizontalAlignment="Left" Height="23" Margin="372,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter1" HorizontalAlignment="Left" Height="25" Margin="342,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter2" HorizontalAlignment="Left" Height="25" Margin="342,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter3" HorizontalAlignment="Left" Height="25" Margin="342,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter4" HorizontalAlignment="Left" Height="25" Margin="342,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter5" HorizontalAlignment="Left" Height="25" Margin="342,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtParameter6" HorizontalAlignment="Left" Height="25" Margin="342,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
         <!--Hier werden die Labels für die Parameter festgelegt -->
-        <Label x:Name="lblParameter1" Content="lbl1" Margin="0,293,425,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto"/>
-        <Label x:Name="lblParameter2" Content="lbl2" Margin="0,321,425,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto"/>
-        <Label x:Name="lblParameter3" Content="lbl3" Margin="0,349,425,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto"/>
-        <Label x:Name="lblParameter4" Content="lbl4" Margin="0,377,425,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto"/>
-        <Label x:Name="lblParameter5" Content="lbl5" Margin="0,405,425,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto"/>
-        <Label x:Name="lblParameter6" Content="lbl6" Margin="0,433,425,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto"/>
+        <Label x:Name="lblParameter1" Content="lbl1" Margin="0,293,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblParameter2" Content="lbl2" Margin="0,321,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblParameter3" Content="lbl3" Margin="0,349,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblParameter4" Content="lbl4" Margin="0,377,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblParameter5" Content="lbl5" Margin="0,405,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblParameter6" Content="lbl6" Margin="0,433,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblHeader"   Content="Header" Margin="342,0,0,181" HorizontalAlignment="Left"  Width="auto" Height="31" FontSize="16" VerticalAlignment="Bottom"/>
 
         <!-- Hier werden die Elemente für die Auswahlleiste festgelegt -->
         <TreeView x:Name="trvFigur" HorizontalAlignment="Left" Height="auto" Margin="50,50,0,0" VerticalAlignment="Top" Width="auto" SelectedItemChanged="trvFigur_SelectedItemChanged">
-            <TreeViewItem x:Name="itmRechteck" Header="Rechteck-Profil" Height="auto" Width="auto" FontSize="14" Selected="itmRechteck_Selected"/>
+            <TreeViewItem x:Name="itmRechteck" Header="Rechteck-Profil" Height="auto" Width="auto" FontSize="14"/>
             <TreeViewItem x:Name="itmKasten" Header="Kasten-Profil" Height="auto" Width="auto" FontSize="14"/>
             <TreeViewItem x:Name="itmDreieck" Header="Dreieck-Profil" Height="auto" Width="auto" FontSize="14"/>
-            <TreeViewItem x:Name="itmKreis" Header="Kreis-Profil" Height="auto" Width="auto" FontSize="14"/>
+            <TreeViewItem x:Name="itmKreisring" Header="Kreisring-Profil" Height="auto" Width="auto" FontSize="14"/>
             <TreeViewItem x:Name="itmUProfil" Header="U-Profil" Height="auto" Width="auto" FontSize="14"/>
             <TreeViewItem x:Name="itmIProfil" Header="I-Profil" Height="auto" Width="auto" FontSize="14"/>
 
         </TreeView>
-
-
 
     </Grid>
 </Window>

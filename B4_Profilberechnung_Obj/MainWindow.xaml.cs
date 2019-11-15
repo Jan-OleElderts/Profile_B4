@@ -25,19 +25,19 @@ namespace B4_Profilberechnung_Obj
 
             InitializeComponent();
             Hide();
-        }             
-        
+        }
+
         private void Button_Click_Ende(object sender, RoutedEventArgs e)
         {
-            //schließt die Anwendung
+            //schließt die Anwendung nach erneuter Abfrage in einer Messagebox
             MessageBoxResult msgAbfrage = MessageBox.Show("Wirklich Beenden?", "Wirklich Beenden?",
                                                           MessageBoxButton.YesNo);
-           
+
             if (msgAbfrage == MessageBoxResult.Yes)
-            { 
-                Close(); 
+            {
+                Close();
             }
-            
+
         }
         private void Button_Click_Reset(object sender, RoutedEventArgs e)
         {
@@ -48,10 +48,202 @@ namespace B4_Profilberechnung_Obj
             txtParameter4.Text = "";
             txtParameter5.Text = "";
             txtParameter6.Text = "";
+            txtLoesung.Text = "";
+
+            txtLoesung.Visibility = Visibility.Hidden;
+            lblLoesung.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click_Berechne(object sender, RoutedEventArgs e)
         {
+            TreeViewItem auswahlItem = (TreeViewItem)trvFigur.SelectedItem;
+            string Variable = auswahlItem.Name;
+
+            switch (Variable)
+            {
+                case ("itmRechteck"):
+                    PruefeRechteck();
+                    break;
+                case ("itmDreieck"):
+                    PruefeDreieck();
+                    break;
+                case ("itmKasten"):
+                    PruefeKasten();
+                    break;
+                case ("itmKreisring"):
+                    PruefeKreisring();
+                    break;
+                case ("itmUProfil"):
+                    PruefeUProfil();
+                    break;
+                case ("itmIProfil"):
+                    PruefeIProfil();
+                    break;
+            }                       
+        }
+
+        private void PruefeIProfil()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PruefeUProfil()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PruefeKreisring()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PruefeKasten()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PruefeDreieck()
+        {
+            Boolean EingabeOK = true;
+            double DreieckH;
+            double DreieckA;
+            double DreieckT;
+            double Volumen;
+
+
+            try
+            {
+                DreieckH = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (DreieckH <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                DreieckA = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (DreieckA <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                DreieckT = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (DreieckT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = DreieckH * 1/2 * DreieckA * DreieckT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
+
+        private void PruefeRechteck()
+        {
+            Boolean EingabeOK = true;
+            double RechteckH;
+            double RechteckB;
+            double RechteckT;
+            double Volumen;
+
+           
+            try
+            {
+                RechteckH = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (RechteckH <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }                       
+
+            try
+            {
+                RechteckB = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (RechteckB <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                RechteckT = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (RechteckT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = RechteckH * RechteckB * RechteckT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
 
         }
 
@@ -72,6 +264,7 @@ namespace B4_Profilberechnung_Obj
             lblParameter5.Visibility = Visibility.Hidden;
             lblParameter6.Visibility = Visibility.Hidden;
             lblHeader.Visibility = Visibility.Hidden;
+            lblLoesung.Visibility = Visibility.Hidden;
 
             txtParameter1.Visibility = Visibility.Hidden;
             txtParameter2.Visibility = Visibility.Hidden;
@@ -79,11 +272,12 @@ namespace B4_Profilberechnung_Obj
             txtParameter4.Visibility = Visibility.Hidden;
             txtParameter5.Visibility = Visibility.Hidden;
             txtParameter6.Visibility = Visibility.Hidden;
+            txtLoesung.Visibility = Visibility.Hidden;
+
             btnBerechne.IsEnabled = false;
 
-        }
-        
-        public void Rechteck()
+        }        
+        public void ShowRechteck()
         {
             // die für den ausgewählten Fall benötigten Label und Textboxen, sowie das passende Bild werden hier eingebledet
             lblParameter1.Visibility = Visibility.Visible;
@@ -99,11 +293,11 @@ namespace B4_Profilberechnung_Obj
             lblParameter1.Content = "h:";
             lblParameter2.Content = "b:";
             lblParameter3.Content = "Tiefe:";
-            lblHeader.Content = "Rechteck";
-
+            lblHeader.Content = "Rechteck";       
+                   
             btnBerechne.IsEnabled = true;
         }
-        public void Dreieck()
+        public void ShowDreieck()
         {
             // die für den ausgewählten Fall benötigten Label und Textboxen, sowie das passende Bild werden hier eingebledet
             lblParameter1.Visibility = Visibility.Visible;
@@ -123,7 +317,7 @@ namespace B4_Profilberechnung_Obj
 
             btnBerechne.IsEnabled = true;
         }
-        public void Kasten()
+        public void ShowKasten()
         {
             // die für den ausgewählten Fall benötigten Label und Textboxen, sowie das passende Bild werden hier eingebledet
             lblParameter1.Visibility = Visibility.Visible;
@@ -148,9 +342,11 @@ namespace B4_Profilberechnung_Obj
             lblHeader.Content = "Kasten";
 
             btnBerechne.IsEnabled = true;
+
+            
             
         }
-        public void Kreisring()
+        public void ShowKreisring()
         {
             // die für den ausgewählten Fall benötigten Label und Textboxen, sowie das passende Bild werden hier eingebledet
             lblParameter1.Visibility = Visibility.Visible;
@@ -170,7 +366,7 @@ namespace B4_Profilberechnung_Obj
 
             btnBerechne.IsEnabled = true;
         }
-        public void UProfil()
+        public void ShowUProfil()
         {
             // die für den ausgewählten Fall benötigten Label und Textboxen, sowie das passende Bild werden hier eingebledet
             lblParameter1.Visibility = Visibility.Visible;
@@ -196,7 +392,7 @@ namespace B4_Profilberechnung_Obj
 
             btnBerechne.IsEnabled = true;
         }
-        public void IProfil()
+        public void ShowIProfil()
         {
             // die für den ausgewählten Fall benötigten Label und Textboxen, sowie das passende Bild werden hier eingebledet
             lblParameter1.Visibility = Visibility.Visible;
@@ -244,22 +440,22 @@ namespace B4_Profilberechnung_Obj
             switch (Variable)
             {
                 case ("itmRechteck"):
-                    Rechteck();
+                    ShowRechteck();
                     break;
                 case ("itmDreieck"):
-                    Dreieck();
+                    ShowDreieck();
                     break;
                 case ("itmKasten"):
-                    Kasten();
+                    ShowKasten();
                     break;
                 case ("itmKreisring"):
-                    Kreisring();
+                    ShowKreisring();
                     break;
                 case ("itmUProfil"):
-                    UProfil();
+                    ShowUProfil();
                     break;
                 case ("itmIProfil"):
-                    IProfil();
+                    ShowIProfil();
                     break;
             }
         }

@@ -26,6 +26,7 @@
         <TextBox x:Name="txtParameter4" HorizontalAlignment="Left" Height="25" Margin="342,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtParameter5" HorizontalAlignment="Left" Height="25" Margin="342,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtParameter6" HorizontalAlignment="Left" Height="25" Margin="342,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtLoesung" HorizontalAlignment="Left" Height="25" Margin="622,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
 
         <!--Hier werden die Labels für die Parameter festgelegt -->
         <Label x:Name="lblParameter1" Content="lbl1" Margin="0,293,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
@@ -35,6 +36,7 @@
         <Label x:Name="lblParameter5" Content="lbl5" Margin="0,405,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
         <Label x:Name="lblParameter6" Content="lbl6" Margin="0,433,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
         <Label x:Name="lblHeader"   Content="Header" Margin="342,0,0,181" HorizontalAlignment="Left"  Width="auto" Height="31" FontSize="16" VerticalAlignment="Bottom"/>
+        <Label x:Name="lblLoesung" Content="lblLoesung" Margin="0,321,193,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
 
         <!-- Hier werden die Elemente für die Auswahlleiste festgelegt -->
         <TreeView x:Name="trvFigur" HorizontalAlignment="Left" Height="auto" Margin="50,50,0,0" VerticalAlignment="Top" Width="auto" SelectedItemChanged="trvFigur_SelectedItemChanged">
@@ -46,6 +48,7 @@
             <TreeViewItem x:Name="itmIProfil" Header="I-Profil" Height="auto" Width="auto" FontSize="14"/>
 
         </TreeView>
+        
 
     </Grid>
 </Window>

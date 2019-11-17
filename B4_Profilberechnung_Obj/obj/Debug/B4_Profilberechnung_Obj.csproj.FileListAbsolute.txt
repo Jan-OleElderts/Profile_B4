@@ -12,3 +12,17 @@ C:\Users\Jan-Ole\Source\Repos\Jan-OleElderts\Profile_B4\B4_Profilberechnung_Obj\
 C:\Users\Jan-Ole\Source\Repos\Jan-OleElderts\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.csproj.GenerateResource.cache
 C:\Users\Jan-Ole\Source\Repos\Jan-OleElderts\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.exe
 C:\Users\Jan-Ole\Source\Repos\Jan-OleElderts\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.pdb
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\bin\Debug\B4_Profilberechnung_Obj.exe.config
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\bin\Debug\B4_Profilberechnung_Obj.exe
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\bin\Debug\B4_Profilberechnung_Obj.pdb
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.csprojAssemblyReference.cache
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\MainWindow.g.cs
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\App.g.cs
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj_MarkupCompile.cache
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj_MarkupCompile.lref
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\MainWindow.baml
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.g.resources
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.Properties.Resources.resources
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.csproj.GenerateResource.cache
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.exe
+C:\Users\Jan-Ole\Source\Repos\17_11_2019\Profile_B4\B4_Profilberechnung_Obj\obj\Debug\B4_Profilberechnung_Obj.pdb

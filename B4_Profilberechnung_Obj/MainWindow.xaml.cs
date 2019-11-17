@@ -84,24 +84,449 @@ namespace B4_Profilberechnung_Obj
 
         private void PruefeIProfil()
         {
-            throw new NotImplementedException();
-        }
+            Boolean EingabeOK = true;
+            double IProfilH;
+            double IProfilh;
+            double IProfilB;
+            double IProfilb;
+            double IProfilT;
+            double Volumen;
 
+
+            try
+            {
+                IProfilH = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (IProfilH <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                IProfilh = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilh <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (IProfilh >= IProfilH)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'H und h', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                IProfilB = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilB <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+
+                IProfilb = Convert.ToDouble(txtParameter4.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilb <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if ((2*IProfilb) >= IProfilB)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'B und b/2', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                IProfilT = Convert.ToDouble(txtParameter5.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = (IProfilB * IProfilH - IProfilb * 2 * IProfilh) * IProfilT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
         private void PruefeUProfil()
         {
-            throw new NotImplementedException();
-        }
+            Boolean EingabeOK = true;
+            double UProfilH;
+            double UProfilh;
+            double UProfilB;
+            double UProfilb;
+            double UProfilT;
+            double Volumen;
 
+
+            try
+            {
+                UProfilH = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (UProfilH <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                UProfilh = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilh <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (UProfilh >= UProfilH)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'H und h', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                UProfilB = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilB <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+
+                UProfilb = Convert.ToDouble(txtParameter4.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilb <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (UProfilb >= UProfilB)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'B und b', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                UProfilT = Convert.ToDouble(txtParameter5.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = (UProfilB * UProfilH - UProfilb * UProfilh) * UProfilT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
         private void PruefeKreisring()
         {
-            throw new NotImplementedException();
-        }
+            Boolean EingabeOK = true;
+            double KreisringR;
+            double Kreisringr;
+            double KreisringT;
 
+            double Volumen;
+
+
+            try
+            {
+                KreisringR = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (KreisringR <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                Kreisringr = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Kreisringr <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (Kreisringr >= KreisringR)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'R und r', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                KreisringT = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (KreisringT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = (Math.Pow(KreisringR,2) - Math.Pow(Kreisringr,2)) * Math.PI * KreisringT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
         private void PruefeKasten()
         {
-            throw new NotImplementedException();
-        }
+            Boolean EingabeOK = true;
+            double KastenH;
+            double Kastenh;
+            double KastenB;
+            double Kastenb;
+            double KastenT;
+            double Volumen;
 
+
+            try
+            {
+                KastenH = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (KastenH <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                Kastenh = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Kastenh <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (Kastenh >= KastenH)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei dem Feld 'H und h', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                KastenB = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (KastenB <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+
+                Kastenb = Convert.ToDouble(txtParameter4.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Kastenb <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (Kastenb >= KastenB)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei dem Feld 'B und b', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            try
+            {
+                KastenT = Convert.ToDouble(txtParameter5.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (KastenT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = (KastenB * KastenH - Kastenb * Kastenh) * KastenT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
         private void PruefeDreieck()
         {
             Boolean EingabeOK = true;
@@ -173,7 +598,6 @@ namespace B4_Profilberechnung_Obj
                 txtLoesung.Text = Convert.ToString(Volumen);
             }
         }
-
         private void PruefeRechteck()
         {
             Boolean EingabeOK = true;
@@ -246,7 +670,6 @@ namespace B4_Profilberechnung_Obj
             }
 
         }
-
         private new void Hide()
         {
             // versteckt alle Textfelder und Parameterboxen und Bilder

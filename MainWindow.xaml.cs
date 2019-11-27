@@ -35,6 +35,7 @@ namespace B4_Profilberechnung_Obj
 
             if (msgAbfrage == MessageBoxResult.Yes)
             {
+                //Schließen der Anwendung
                 Close();
             }
 
@@ -50,6 +51,7 @@ namespace B4_Profilberechnung_Obj
             txtParameter6.Text = "";
             txtLoesung.Text = "";
 
+            //Sichtbarkeit auf Hidden
             txtLoesung.Visibility = Visibility.Hidden;
             lblLoesung.Visibility = Visibility.Hidden;
         }
@@ -59,6 +61,7 @@ namespace B4_Profilberechnung_Obj
             TreeViewItem auswahlItem = (TreeViewItem)trvFigur.SelectedItem;
             string Variable = auswahlItem.Name;
 
+            //Abfrage von Fallunterscheidung, mit dem Aufruf zum jeweiligen Fall
             switch (Variable)
             {
                 case ("itmRechteck"):
@@ -84,21 +87,372 @@ namespace B4_Profilberechnung_Obj
 
         private void PruefeIProfil()
         {
-            throw new NotImplementedException();
-        }
+            //Definieren von Variablen
+            Boolean EingabeOK = true;
+            double IProfilH;
+            double IProfilh;
+            double IProfilB;
+            double IProfilb;
+            double IProfilT;
+            double Volumen;
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                IProfilH = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (IProfilH <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                IProfilh = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilh <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (IProfilh >= IProfilH)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'H und h', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                IProfilB = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilB <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+
+                IProfilb = Convert.ToDouble(txtParameter4.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilb <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if ((2*IProfilb) >= IProfilB)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'B und b/2', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                IProfilT = Convert.ToDouble(txtParameter5.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (IProfilT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = (IProfilB * IProfilH - IProfilb * 2 * IProfilh) * IProfilT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
         private void PruefeUProfil()
         {
-            throw new NotImplementedException();
-        }
+            //Definieren von Variablen
+            Boolean EingabeOK = true;
+            double UProfilH;
+            double UProfilh;
+            double UProfilB;
+            double UProfilb;
+            double UProfilT;
+            double Volumen;
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                UProfilH = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (UProfilH <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                UProfilh = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilh <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (UProfilh >= UProfilH)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'H und h', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                UProfilB = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilB <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+
+                UProfilb = Convert.ToDouble(txtParameter4.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilb <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (UProfilb >= UProfilB)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'B und b', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                UProfilT = Convert.ToDouble(txtParameter5.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (UProfilT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = (UProfilB * UProfilH - UProfilb * UProfilh) * UProfilT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
         private void PruefeKreisring()
         {
-            throw new NotImplementedException();
-        }
+            //Definieren von Variablen
+            Boolean EingabeOK = true;
+            double KreisringR;
+            double Kreisringr;
+            double KreisringT;
 
+            double Volumen;
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                KreisringR = Convert.ToDouble(txtParameter1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (KreisringR <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                Kreisringr = Convert.ToDouble(txtParameter2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Kreisringr <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            if (Kreisringr >= KreisringR)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei 'R und r', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
+            try
+            {
+                KreisringT = Convert.ToDouble(txtParameter3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (KreisringT <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
+            if (EingabeOK)
+            {
+                txtLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Visibility = Visibility.Visible;
+                lblLoesung.Content = "Volumen:";
+
+                Volumen = (Math.Pow(KreisringR,2) - Math.Pow(Kreisringr,2)) * Math.PI * KreisringT;
+                txtLoesung.Text = Convert.ToString(Volumen);
+            }
+        }
         private void PruefeKasten()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double KastenH;
             double Kastenh;
@@ -107,7 +461,9 @@ namespace B4_Profilberechnung_Obj
             double KastenT;
             double Volumen;
 
-
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 KastenH = Convert.ToDouble(txtParameter1.Text);
@@ -126,6 +482,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 Kastenh = Convert.ToDouble(txtParameter2.Text);
@@ -143,6 +502,16 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            if (Kastenh >= KastenH)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei dem Feld 'H und h', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 KastenB = Convert.ToDouble(txtParameter3.Text);
@@ -159,10 +528,14 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
-            
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
-                Kastenb = Convert.ToDouble(txtParameter3.Text);
+
+                Kastenb = Convert.ToDouble(txtParameter4.Text);
             }
             catch (Exception)
             {
@@ -177,9 +550,19 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            if (Kastenb >= KastenB)
+            {
+                MessageBox.Show("Unmögliche Wertepaare bei dem Feld 'B und b', bitte Eingaben erneut prüfen!");
+                EingabeOK = false;
+                return;
+            }
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
-                KastenT = Convert.ToDouble(txtParameter3.Text);
+                KastenT = Convert.ToDouble(txtParameter5.Text);
             }
             catch (Exception)
             {
@@ -187,28 +570,27 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
-
-            if (Kastenh > KastenH || Kastenb>KastenB )
+            if (KastenT <= 0)
             {
-                MessageBox.Show("Bitte nur h kleiner H oder b kleiner B eingeben");
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
                 EingabeOK = false;
                 return;
             }
-          
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
                 txtLoesung.Visibility = Visibility.Visible;
                 lblLoesung.Visibility = Visibility.Visible;
                 lblLoesung.Content = "Volumen:";
 
-                Volumen = KastenH * KastenB * KastenT - Kastenh * Kastenb * KastenT;
+                Volumen = (KastenB * KastenH - Kastenb * Kastenh) * KastenT;
                 txtLoesung.Text = Convert.ToString(Volumen);
             }
         }
-
         private void PruefeDreieck()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double DreieckH;
             double DreieckA;
@@ -216,6 +598,9 @@ namespace B4_Profilberechnung_Obj
             double Volumen;
 
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 DreieckH = Convert.ToDouble(txtParameter1.Text);
@@ -234,6 +619,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 DreieckA = Convert.ToDouble(txtParameter2.Text);
@@ -251,6 +639,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 DreieckT = Convert.ToDouble(txtParameter3.Text);
@@ -268,6 +659,7 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
                 txtLoesung.Visibility = Visibility.Visible;
@@ -278,16 +670,18 @@ namespace B4_Profilberechnung_Obj
                 txtLoesung.Text = Convert.ToString(Volumen);
             }
         }
-
         private void PruefeRechteck()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double RechteckH;
             double RechteckB;
             double RechteckT;
             double Volumen;
 
-           
+           //Prüfen, ob eingegebener Parameter i.O. ist.
+           //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+           //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 RechteckH = Convert.ToDouble(txtParameter1.Text);
@@ -304,8 +698,11 @@ namespace B4_Profilberechnung_Obj
                 MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
                 EingabeOK = false;
                 return;
-            }                       
+            }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 RechteckB = Convert.ToDouble(txtParameter2.Text);
@@ -323,6 +720,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 RechteckT = Convert.ToDouble(txtParameter3.Text);
@@ -340,6 +740,7 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
                 txtLoesung.Visibility = Visibility.Visible;
@@ -351,7 +752,6 @@ namespace B4_Profilberechnung_Obj
             }
 
         }
-
         private new void Hide()
         {
             // versteckt alle Textfelder und Parameterboxen und Bilder

@@ -13,16 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PARTITF;
+using MECMOD;
+using INFITF;
 using MessageBox = System.Windows.MessageBox;
 
 namespace B4_Profilberechnung_Obj
 {
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         public MainWindow()
         {
-
+            
             InitializeComponent();
             Hide();
         }
@@ -35,6 +38,7 @@ namespace B4_Profilberechnung_Obj
 
             if (msgAbfrage == MessageBoxResult.Yes)
             {
+                //Schließen der Anwendung
                 Close();
             }
 
@@ -48,17 +52,30 @@ namespace B4_Profilberechnung_Obj
             txtParameter4.Text = "";
             txtParameter5.Text = "";
             txtParameter6.Text = "";
-            txtLoesung.Text = "";
+            txtVolumen.Text = "";
+            txtDichte.Text = "";
+            txtGeld.Text = "";
+            txtFlaeche.Text = "";
+            txtMasse.Text = "";
 
-            txtLoesung.Visibility = Visibility.Hidden;
-            lblLoesung.Visibility = Visibility.Hidden;
+            //Sichtbarkeit auf Hidden
+            txtVolumen.Visibility = Visibility.Hidden;
+            txtPreis.Visibility = Visibility.Hidden;
+            txtFlaeche.Visibility = Visibility.Hidden;
+            txtMasse.Visibility = Visibility.Hidden;
+            lblVolumen.Visibility = Visibility.Hidden;
+            lblPreis.Visibility = Visibility.Hidden;
+            lblFlaeche.Visibility = Visibility.Hidden;
+            lblMasse.Visibility = Visibility.Hidden;
+
+            btnCatia.IsEnabled = false;
         }
-
         private void Button_Click_Berechne(object sender, RoutedEventArgs e)
         {
             TreeViewItem auswahlItem = (TreeViewItem)trvFigur.SelectedItem;
             string Variable = auswahlItem.Name;
 
+            //Abfrage von Fallunterscheidung, mit dem Aufruf zum jeweiligen Fall
             switch (Variable)
             {
                 case ("itmRechteck"):
@@ -79,11 +96,16 @@ namespace B4_Profilberechnung_Obj
                 case ("itmIProfil"):
                     PruefeIProfil();
                     break;
-            }                       
+            }
+        }
+        private void btnCatia_Click(object sender, RoutedEventArgs e)
+        {
+            new CatiaControl();          
         }
 
         private void PruefeIProfil()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double IProfilH;
             double IProfilh;
@@ -91,8 +113,14 @@ namespace B4_Profilberechnung_Obj
             double IProfilb;
             double IProfilT;
             double Volumen;
+            double Dichte;
+            double Preis;
+            double Masse;
+            double Flaeche;
 
-
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 IProfilH = Convert.ToDouble(txtParameter1.Text);
@@ -111,6 +139,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 IProfilh = Convert.ToDouble(txtParameter2.Text);
@@ -135,6 +166,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 IProfilB = Convert.ToDouble(txtParameter3.Text);
@@ -152,6 +186,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
 
@@ -177,6 +214,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 IProfilT = Convert.ToDouble(txtParameter5.Text);
@@ -193,19 +233,67 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
+            try
+            {
+                Dichte = Convert.ToDouble(txtDichte.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Dichte <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+            try
+            {
+                Preis = Convert.ToDouble(txtGeld.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Preis <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
-                txtLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Content = "Volumen:";
+                txtVolumen.Visibility = Visibility.Visible;
+                txtMasse.Visibility = Visibility.Visible;
+                txtFlaeche.Visibility = Visibility.Visible;
+                txtPreis.Visibility = Visibility.Visible;
 
-                Volumen = (IProfilB * IProfilH - IProfilb * 2 * IProfilh) * IProfilT;
-                txtLoesung.Text = Convert.ToString(Volumen);
+                lblVolumen.Visibility = Visibility.Visible;
+                lblMasse.Visibility = Visibility.Visible;
+                lblFlaeche.Visibility = Visibility.Visible;
+                lblPreis.Visibility = Visibility.Visible;
+
+                btnCatia.IsEnabled = true;
+
+                Flaeche = (IProfilB * IProfilH - IProfilb * 2 * IProfilh);
+                txtFlaeche.Text = Convert.ToString(Flaeche);
+                Volumen = Flaeche * IProfilT;
+                txtVolumen.Text = Convert.ToString(Volumen);
+                Masse = Volumen * Dichte;
+                txtMasse.Text = Convert.ToString(Masse);
+                Preis = Volumen * Preis;
+                txtPreis.Text = Convert.ToString(Preis);
             }
         }
         private void PruefeUProfil()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double UProfilH;
             double UProfilh;
@@ -213,8 +301,14 @@ namespace B4_Profilberechnung_Obj
             double UProfilb;
             double UProfilT;
             double Volumen;
+            double Dichte;
+            double Preis;
+            double Masse;
+            double Flaeche;
 
-
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 UProfilH = Convert.ToDouble(txtParameter1.Text);
@@ -233,6 +327,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 UProfilh = Convert.ToDouble(txtParameter2.Text);
@@ -257,6 +354,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 UProfilB = Convert.ToDouble(txtParameter3.Text);
@@ -274,6 +374,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
 
@@ -299,6 +402,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 UProfilT = Convert.ToDouble(txtParameter5.Text);
@@ -315,27 +421,80 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
+            try
+            {
+                Dichte = Convert.ToDouble(txtDichte.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Dichte <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+            try
+            {
+                Preis = Convert.ToDouble(txtGeld.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Preis <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
-                txtLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Content = "Volumen:";
+                txtVolumen.Visibility = Visibility.Visible;
+                txtMasse.Visibility = Visibility.Visible;
+                txtFlaeche.Visibility = Visibility.Visible;
+                txtPreis.Visibility = Visibility.Visible;
 
-                Volumen = (UProfilB * UProfilH - UProfilb * UProfilh) * UProfilT;
-                txtLoesung.Text = Convert.ToString(Volumen);
+                lblVolumen.Visibility = Visibility.Visible;
+                lblMasse.Visibility = Visibility.Visible;
+                lblFlaeche.Visibility = Visibility.Visible;
+                lblPreis.Visibility = Visibility.Visible;
+
+                btnCatia.IsEnabled = true;
+
+                Flaeche = (UProfilB * UProfilH - UProfilb * UProfilh);
+                txtFlaeche.Text = Convert.ToString(Flaeche);
+                Volumen = Flaeche * UProfilT;
+                txtVolumen.Text = Convert.ToString(Volumen);
+                Masse = Volumen * Dichte;
+                txtMasse.Text = Convert.ToString(Masse);
+                Preis = Volumen * Preis;
+                txtPreis.Text = Convert.ToString(Preis);
             }
         }
         private void PruefeKreisring()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double KreisringR;
             double Kreisringr;
             double KreisringT;
-
             double Volumen;
+            double Dichte;
+            double Preis;
+            double Masse;
+            double Flaeche;
 
-
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 KreisringR = Convert.ToDouble(txtParameter1.Text);
@@ -354,6 +513,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 Kreisringr = Convert.ToDouble(txtParameter2.Text);
@@ -378,6 +540,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 KreisringT = Convert.ToDouble(txtParameter3.Text);
@@ -394,19 +559,68 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
+            try
+            {
+                Dichte = Convert.ToDouble(txtDichte.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Dichte <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+            try
+            {
+                Preis = Convert.ToDouble(txtGeld.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Preis <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
-                txtLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Content = "Volumen:";
+                txtVolumen.Visibility = Visibility.Visible;
+                txtMasse.Visibility = Visibility.Visible;
+                txtFlaeche.Visibility = Visibility.Visible;
+                txtPreis.Visibility = Visibility.Visible;
 
-                Volumen = (Math.Pow(KreisringR,2) - Math.Pow(Kreisringr,2)) * Math.PI * KreisringT;
-                txtLoesung.Text = Convert.ToString(Volumen);
+                lblVolumen.Visibility = Visibility.Visible;
+                lblMasse.Visibility = Visibility.Visible;
+                lblFlaeche.Visibility = Visibility.Visible;
+                lblPreis.Visibility = Visibility.Visible;
+
+
+                btnCatia.IsEnabled = true;
+
+                Flaeche = (Math.Pow(KreisringR, 2) - Math.Pow(Kreisringr, 2)) * Math.PI;
+                txtFlaeche.Text = Convert.ToString(Flaeche);
+                Volumen = Flaeche * KreisringT;
+                txtVolumen.Text = Convert.ToString(Volumen);
+                Masse = Volumen * Dichte;
+                txtMasse.Text = Convert.ToString(Masse);
+                Preis = Volumen * Preis;
+                txtPreis.Text = Convert.ToString(Preis);
             }
         }
         private void PruefeKasten()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double KastenH;
             double Kastenh;
@@ -414,8 +628,14 @@ namespace B4_Profilberechnung_Obj
             double Kastenb;
             double KastenT;
             double Volumen;
+            double Dichte;
+            double Preis;
+            double Flaeche;
+            double Masse;
 
-
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 KastenH = Convert.ToDouble(txtParameter1.Text);
@@ -434,6 +654,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 Kastenh = Convert.ToDouble(txtParameter2.Text);
@@ -458,6 +681,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 KastenB = Convert.ToDouble(txtParameter3.Text);
@@ -475,6 +701,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
 
@@ -499,7 +728,26 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
+            try
+            {
+                Dichte = Convert.ToDouble(txtDichte.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Dichte <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 KastenT = Convert.ToDouble(txtParameter5.Text);
@@ -516,26 +764,65 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
+            try
+            {
+                Preis = Convert.ToDouble(txtGeld.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Preis <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
-                txtLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Content = "Volumen:";
+                txtVolumen.Visibility = Visibility.Visible;
+                txtMasse.Visibility = Visibility.Visible;
+                txtFlaeche.Visibility = Visibility.Visible;
+                txtPreis.Visibility = Visibility.Visible;
 
-                Volumen = (KastenB * KastenH - Kastenb * Kastenh) * KastenT;
-                txtLoesung.Text = Convert.ToString(Volumen);
+                lblVolumen.Visibility = Visibility.Visible;
+                lblMasse.Visibility = Visibility.Visible;
+                lblFlaeche.Visibility = Visibility.Visible;
+                lblPreis.Visibility = Visibility.Visible;
+
+                btnCatia.IsEnabled = true;
+
+                Flaeche = (KastenB * KastenH - Kastenb * Kastenh);
+                txtFlaeche.Text = Convert.ToString(Flaeche);
+                Volumen = Flaeche * KastenT;
+                txtVolumen.Text = Convert.ToString(Volumen);
+                Masse = Volumen * Dichte;
+                txtMasse.Text = Convert.ToString(Masse);
+                Preis = Volumen * Preis;
+                txtPreis.Text = Convert.ToString(Preis);
+
             }
         }
         private void PruefeDreieck()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double DreieckH;
             double DreieckA;
             double DreieckT;
             double Volumen;
+            double Dichte;
+            double Preis;
+            double Masse;
+            double Flaeche;
 
-
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 DreieckH = Convert.ToDouble(txtParameter1.Text);
@@ -554,6 +841,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 DreieckA = Convert.ToDouble(txtParameter2.Text);
@@ -571,6 +861,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 DreieckT = Convert.ToDouble(txtParameter3.Text);
@@ -587,26 +880,80 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
+            try
+            {
+                Dichte = Convert.ToDouble(txtDichte.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Dichte <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+            try
+            {
+                Preis = Convert.ToDouble(txtGeld.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Preis <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
 
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
-                txtLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Content = "Volumen:";
+                txtVolumen.Visibility = Visibility.Visible;
+                txtFlaeche.Visibility = Visibility.Visible;
+                txtMasse.Visibility = Visibility.Visible;
+                txtPreis.Visibility = Visibility.Visible;
 
-                Volumen = DreieckH * 1/2 * DreieckA * DreieckT;
-                txtLoesung.Text = Convert.ToString(Volumen);
+                lblVolumen.Visibility = Visibility.Visible;                
+                lblFlaeche.Visibility = Visibility.Visible;                
+                lblMasse.Visibility = Visibility.Visible;                
+                lblPreis.Visibility = Visibility.Visible;                
+
+                btnCatia.IsEnabled = true;
+
+                Flaeche = DreieckH * 1 / 2 * DreieckA;
+                txtFlaeche.Text = Convert.ToString(Flaeche);
+                Volumen = Flaeche * DreieckT;
+                txtVolumen.Text = Convert.ToString(Volumen);
+                Masse = Volumen * Dichte;
+                txtMasse.Text = Convert.ToString(Masse);
+                Preis = Volumen * Preis;
+                txtPreis.Text = Convert.ToString(Preis);
             }
         }
         private void PruefeRechteck()
         {
+            //Definieren von Variablen
             Boolean EingabeOK = true;
             double RechteckH;
             double RechteckB;
             double RechteckT;
             double Volumen;
+            double Flaeche;
+            double Masse;
+            double Preis;
+            double Dichte;
 
-           
+           //Prüfen, ob eingegebener Parameter i.O. ist.
+           //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+           //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 RechteckH = Convert.ToDouble(txtParameter1.Text);
@@ -623,8 +970,11 @@ namespace B4_Profilberechnung_Obj
                 MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
                 EingabeOK = false;
                 return;
-            }                       
+            }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 RechteckB = Convert.ToDouble(txtParameter2.Text);
@@ -642,6 +992,9 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 RechteckT = Convert.ToDouble(txtParameter3.Text);
@@ -659,14 +1012,63 @@ namespace B4_Profilberechnung_Obj
                 return;
             }
 
+            try
+            {
+                Dichte = Convert.ToDouble(txtDichte.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Dichte<=0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+            try
+            {
+                Preis = Convert.ToDouble(txtGeld.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bitte nur Zahlen eingeben");
+                EingabeOK = false;
+                return;
+            }
+            if (Preis <= 0)
+            {
+                MessageBox.Show("Bitte nur Zahlen größer 0 eingeben");
+                EingabeOK = false;
+                return;
+            }
+
+            //Wenn alle Eingaben i.O., dann Berechnung durchführen
             if (EingabeOK)
             {
-                txtLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Visibility = Visibility.Visible;
-                lblLoesung.Content = "Volumen:";
+                txtVolumen.Visibility = Visibility.Visible;
+                txtFlaeche.Visibility = Visibility.Visible;
+                txtMasse.Visibility = Visibility.Visible;
+                txtPreis.Visibility = Visibility.Visible;
 
-                Volumen = RechteckH * RechteckB * RechteckT;
-                txtLoesung.Text = Convert.ToString(Volumen);
+                lblVolumen.Visibility = Visibility.Visible;               
+                lblFlaeche.Visibility = Visibility.Visible;
+                lblMasse.Visibility = Visibility.Visible;                
+                lblPreis.Visibility = Visibility.Visible;               
+
+                btnCatia.IsEnabled = true;
+
+                Flaeche = RechteckH * RechteckB;
+                txtFlaeche.Text = Convert.ToString(Flaeche);
+                Volumen =  Flaeche * RechteckT;
+                txtVolumen.Text = Convert.ToString(Volumen);
+                Masse = Volumen * Dichte;
+                txtMasse.Text = Convert.ToString(Masse);
+                Preis = Masse * Preis;
+                txtPreis.Text = Convert.ToString(Preis);
+
             }
 
         }
@@ -687,7 +1089,13 @@ namespace B4_Profilberechnung_Obj
             lblParameter5.Visibility = Visibility.Hidden;
             lblParameter6.Visibility = Visibility.Hidden;
             lblHeader.Visibility = Visibility.Hidden;
-            lblLoesung.Visibility = Visibility.Hidden;
+            lblVolumen.Visibility = Visibility.Hidden;
+            lblFlaeche.Visibility = Visibility.Hidden;
+            lblMasse.Visibility = Visibility.Hidden;
+            lblPreis.Visibility = Visibility.Hidden;
+            lblVolumen.Visibility = Visibility.Hidden;
+            lblGeld.Visibility = Visibility.Hidden;
+            lblDichte.Visibility = Visibility.Hidden;
 
             txtParameter1.Visibility = Visibility.Hidden;
             txtParameter2.Visibility = Visibility.Hidden;
@@ -695,9 +1103,16 @@ namespace B4_Profilberechnung_Obj
             txtParameter4.Visibility = Visibility.Hidden;
             txtParameter5.Visibility = Visibility.Hidden;
             txtParameter6.Visibility = Visibility.Hidden;
-            txtLoesung.Visibility = Visibility.Hidden;
+            txtVolumen.Visibility = Visibility.Hidden;
+            txtFlaeche.Visibility = Visibility.Hidden;
+            txtMasse.Visibility = Visibility.Hidden;
+            txtPreis.Visibility = Visibility.Hidden;
+            txtVolumen.Visibility = Visibility.Hidden;
+            txtGeld.Visibility = Visibility.Hidden;
+            txtDichte.Visibility = Visibility.Hidden;
 
             btnBerechne.IsEnabled = false;
+            btnCatia.IsEnabled = false;
 
         }        
         public void ShowRechteck()
@@ -707,9 +1122,14 @@ namespace B4_Profilberechnung_Obj
             lblParameter2.Visibility = Visibility.Visible;
             lblParameter3.Visibility = Visibility.Visible;
             lblHeader.Visibility = Visibility.Visible;
+            lblGeld.Visibility = Visibility.Visible;
+            lblDichte.Visibility = Visibility.Visible;
+
             txtParameter1.Visibility = Visibility.Visible;
             txtParameter2.Visibility = Visibility.Visible;
             txtParameter3.Visibility = Visibility.Visible;
+            txtGeld.Visibility = Visibility.Visible;
+            txtDichte.Visibility = Visibility.Visible;
             imRechteck.Visibility = Visibility.Visible;
 
             // Beschriftung der Labels
@@ -719,6 +1139,7 @@ namespace B4_Profilberechnung_Obj
             lblHeader.Content = "Rechteck";       
                    
             btnBerechne.IsEnabled = true;
+            
         }
         public void ShowDreieck()
         {
@@ -727,9 +1148,14 @@ namespace B4_Profilberechnung_Obj
             lblParameter2.Visibility = Visibility.Visible;
             lblParameter3.Visibility = Visibility.Visible;
             lblHeader.Visibility = Visibility.Visible;
+            lblGeld.Visibility = Visibility.Visible;
+            lblDichte.Visibility = Visibility.Visible;
+
             txtParameter1.Visibility = Visibility.Visible;
             txtParameter2.Visibility = Visibility.Visible;
             txtParameter3.Visibility = Visibility.Visible;
+            txtGeld.Visibility = Visibility.Visible;
+            txtDichte.Visibility = Visibility.Visible;
             imDreieck.Visibility = Visibility.Visible;
 
             // Beschriftung der Labels
@@ -739,6 +1165,7 @@ namespace B4_Profilberechnung_Obj
             lblHeader.Content = "Dreieck";
 
             btnBerechne.IsEnabled = true;
+            
         }
         public void ShowKasten()
         {
@@ -749,11 +1176,16 @@ namespace B4_Profilberechnung_Obj
             lblParameter4.Visibility = Visibility.Visible;
             lblParameter5.Visibility = Visibility.Visible;
             lblHeader.Visibility = Visibility.Visible;
+            lblGeld.Visibility = Visibility.Visible;
+            lblDichte.Visibility = Visibility.Visible;
+
             txtParameter1.Visibility = Visibility.Visible;
             txtParameter2.Visibility = Visibility.Visible;
             txtParameter3.Visibility = Visibility.Visible;
             txtParameter4.Visibility = Visibility.Visible;
             txtParameter5.Visibility = Visibility.Visible;
+            txtGeld.Visibility = Visibility.Visible;
+            txtDichte.Visibility = Visibility.Visible;
             imKasten.Visibility = Visibility.Visible;
 
             // Beschriftung der Labels
@@ -765,9 +1197,7 @@ namespace B4_Profilberechnung_Obj
             lblHeader.Content = "Kasten";
 
             btnBerechne.IsEnabled = true;
-
-            
-            
+           
         }
         public void ShowKreisring()
         {
@@ -776,9 +1206,14 @@ namespace B4_Profilberechnung_Obj
             lblParameter2.Visibility = Visibility.Visible;
             lblParameter3.Visibility = Visibility.Visible;
             lblHeader.Visibility = Visibility.Visible;
+            lblGeld.Visibility = Visibility.Visible;
+            lblDichte.Visibility = Visibility.Visible;
+
             txtParameter1.Visibility = Visibility.Visible;
             txtParameter2.Visibility = Visibility.Visible;
             txtParameter3.Visibility = Visibility.Visible;
+            txtGeld.Visibility = Visibility.Visible;
+            txtDichte.Visibility = Visibility.Visible;
             imKreisring.Visibility = Visibility.Visible;
 
             // Beschriftung der Labels
@@ -788,6 +1223,7 @@ namespace B4_Profilberechnung_Obj
             lblHeader.Content = "Kreisring";
 
             btnBerechne.IsEnabled = true;
+           
         }
         public void ShowUProfil()
         {
@@ -798,11 +1234,16 @@ namespace B4_Profilberechnung_Obj
             lblParameter4.Visibility = Visibility.Visible;
             lblParameter5.Visibility = Visibility.Visible;
             lblHeader.Visibility = Visibility.Visible;
+            lblGeld.Visibility = Visibility.Visible;
+            lblDichte.Visibility = Visibility.Visible;
+
             txtParameter1.Visibility = Visibility.Visible;
             txtParameter2.Visibility = Visibility.Visible;
             txtParameter3.Visibility = Visibility.Visible;
             txtParameter4.Visibility = Visibility.Visible;
             txtParameter5.Visibility = Visibility.Visible;
+            txtGeld.Visibility = Visibility.Visible;
+            txtDichte.Visibility = Visibility.Visible;
             imUProfil.Visibility = Visibility.Visible;
 
             // Beschriftung der Labels
@@ -814,6 +1255,7 @@ namespace B4_Profilberechnung_Obj
             lblHeader.Content = "U-Profil";
 
             btnBerechne.IsEnabled = true;
+            
         }
         public void ShowIProfil()
         {
@@ -824,11 +1266,16 @@ namespace B4_Profilberechnung_Obj
             lblParameter4.Visibility = Visibility.Visible;
             lblParameter5.Visibility = Visibility.Visible;
             lblHeader.Visibility = Visibility.Visible;
+            lblGeld.Visibility = Visibility.Visible;
+            lblDichte.Visibility = Visibility.Visible;
+
             txtParameter1.Visibility = Visibility.Visible;
             txtParameter2.Visibility = Visibility.Visible;
             txtParameter3.Visibility = Visibility.Visible;
             txtParameter4.Visibility = Visibility.Visible;
             txtParameter5.Visibility = Visibility.Visible;
+            txtGeld.Visibility = Visibility.Visible;
+            txtDichte.Visibility = Visibility.Visible;
             imIProfil.Visibility = Visibility.Visible;
 
             // Beschriftung der Labels
@@ -840,6 +1287,7 @@ namespace B4_Profilberechnung_Obj
             lblHeader.Content = "I-Profil";
 
             btnBerechne.IsEnabled = true;
+            
         }
 
 
@@ -882,6 +1330,8 @@ namespace B4_Profilberechnung_Obj
                     break;
             }
         }
+
+       
     }
 
        // private void itmRechteck_Selected(object sender, RoutedEventArgs e)

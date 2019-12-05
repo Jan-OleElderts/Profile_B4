@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:B4_Profilberechnung_Obj"
         mc:Ignorable="d"
-        Title="Profilberechnung" Height="500" Width="800" Icon="JE.ico">
-    <Grid>
+        Title="Profilberechnung" Height="500" Width="800" Icon="JE.ico" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0">
 
         <Button  Content="Schließen" HorizontalAlignment="Left" Margin="50,0,0,50" VerticalAlignment="Bottom"  Width="75" Click="Button_Click_Ende"/>
         <Button Content="Reset" HorizontalAlignment="Left" Margin="50,0,0,100" VerticalAlignment="Bottom" Width="75" Click="Button_Click_Reset"/>
         <Button x:Name="btnBerechne" Content="Berechne" HorizontalAlignment="Left" Margin="50,0,0,150" VerticalAlignment="Bottom" Width="75" Click="Button_Click_Berechne"/>
+        <Button x:Name="btnCatia" Content="CATIA" HorizontalAlignment="Left" Margin="50,0,0,200" Width="75" Height="20" VerticalAlignment="Bottom" Click="btnCatia_Click"/>
 
         <Image x:Name="imRechteck" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imRechteck.PNG" />
         <Image x:Name="imDreieck" HorizontalAlignment="Right" Height="250" Margin="0,50,50,0" VerticalAlignment="Top" Width="250" Source="imDreieck.PNG" />
@@ -26,7 +27,12 @@
         <TextBox x:Name="txtParameter4" HorizontalAlignment="Left" Height="25" Margin="342,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtParameter5" HorizontalAlignment="Left" Height="25" Margin="342,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtParameter6" HorizontalAlignment="Left" Height="25" Margin="342,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtLoesung" HorizontalAlignment="Left" Height="25" Margin="622,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox x:Name="txtGeld" HorizontalAlignment="Left" Height="25" Margin="342,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtDichte" HorizontalAlignment="Left" Height="25" Margin="342,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtVolumen" HorizontalAlignment="Left" Height="25" Margin="622,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox x:Name="txtFlaeche" HorizontalAlignment="Left" Height="25" Margin="622,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox x:Name="txtMasse" HorizontalAlignment="Left" Height="25" Margin="622,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox x:Name="txtPreis" HorizontalAlignment="Left" Height="25" Margin="622,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
 
         <!--Hier werden die Labels für die Parameter festgelegt -->
         <Label x:Name="lblParameter1" Content="lbl1" Margin="0,293,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
@@ -35,8 +41,13 @@
         <Label x:Name="lblParameter4" Content="lbl4" Margin="0,377,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
         <Label x:Name="lblParameter5" Content="lbl5" Margin="0,405,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
         <Label x:Name="lblParameter6" Content="lbl6" Margin="0,433,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
-        <Label x:Name="lblHeader"   Content="Header" Margin="342,0,0,181" HorizontalAlignment="Left"  Width="auto" Height="31" FontSize="16" VerticalAlignment="Bottom"/>
-        <Label x:Name="lblLoesung" Content="lblLoesung" Margin="0,321,193,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblGeld" Content="Preis pro Kilo:" Margin="0,265,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblDichte" Content="Dichte:" Margin="0,237,450,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="auto" Height="25"/>
+        <Label x:Name="lblHeader"   Content="Header" Margin="342,0,0,300" HorizontalAlignment="Left"  Width="auto" Height="31" FontSize="16" VerticalAlignment="Bottom"/>
+        <Label x:Name="lblVolumen" Content="Volumen:" Margin="530,321,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="auto" Height="25"/>
+        <Label x:Name="lblFlaeche" Content="Flaeche:" Margin="530,349,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="63"/>
+        <Label x:Name="lblMasse" Content="Masse:" Margin="530,377,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="63"/>
+        <Label x:Name="lblPreis" Content="Preis:" Margin="530,405,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="63"/>
 
         <!-- Hier werden die Elemente für die Auswahlleiste festgelegt -->
         <TreeView x:Name="trvFigur" HorizontalAlignment="Left" Height="auto" Margin="50,50,0,0" VerticalAlignment="Top" Width="auto" SelectedItemChanged="trvFigur_SelectedItemChanged">
@@ -48,7 +59,9 @@
             <TreeViewItem x:Name="itmIProfil" Header="I-Profil" Height="auto" Width="auto" FontSize="14"/>
 
         </TreeView>
-        
+
+
+
 
     </Grid>
 </Window>

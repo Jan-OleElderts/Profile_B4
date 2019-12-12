@@ -78,8 +78,8 @@ namespace B4_Profilberechnung_Obj
             //Abfrage von Fallunterscheidung, mit dem Aufruf zum jeweiligen Fall
             switch (Variable)
             {
-                case ("itmRechteck"):
-                    PruefeRechteck();
+                case ("itmRechteck"):                   
+                    PruefeRechteck();                   
                     break;
                 case ("itmDreieck"):
                     PruefeDreieck();
@@ -98,9 +98,91 @@ namespace B4_Profilberechnung_Obj
                     break;
             }
         }
+
+
         public void btnCatia_Click(object sender, RoutedEventArgs e)
         {
-            new CatiaControl();          
+            
+
+            try
+            {
+                 CatiaConnection cc = new  CatiaConnection();
+
+                //finde den Catia Prozess
+                if (cc.CATIALaeuft())
+                {
+                    // Öffne ein neues Part
+                    cc.ErzeugePart();
+
+                    // Erstelle eine Skizze
+                    cc.ErstelleLeereSkizze();
+
+                    TreeViewItem auswahlItem = (TreeViewItem)trvFigur.SelectedItem;
+                    string Variable = auswahlItem.Name;
+
+                    //Abfrage von Fallunterscheidung, mit dem Aufruf zum jeweiligen Fall
+                    // Generiere ein Profil
+                    switch (Variable)
+                    {
+                        case ("itmRechteck"):
+                            double RechteckH = Convert.ToDouble(txtParameter1.Text);
+                            double RechteckB = Convert.ToDouble(txtParameter2.Text);
+                            cc.ErzeugeSkizzeRechteck(RechteckH, RechteckB);
+                            double RechteckT = Convert.ToDouble(txtParameter3.Text);
+                            cc.ErzeugePad(RechteckT);
+                            break;
+                        case ("itmDreieck"):
+                            double DreieckH = Convert.ToDouble(txtParameter1.Text);
+                            double DreieckB = Convert.ToDouble(txtParameter2.Text);
+                            cc.ErzeugeSkizzeDreieck(DreieckH, DreieckB);
+                            double DreieckT = Convert.ToDouble(txtParameter3.Text);
+                            cc.ErzeugePad(DreieckT);
+                            break;
+                        case ("itmKasten"):
+                            double KastenH = Convert.ToDouble(txtParameter1.Text);
+                            double Kastenh = Convert.ToDouble(txtParameter2.Text);
+                            double KastenB = Convert.ToDouble(txtParameter3.Text);
+                            double Kastenb = Convert.ToDouble(txtParameter4.Text);
+                            cc.ErzeugeSkizzeKasten(KastenH, Kastenh, KastenB, Kastenb);
+                            double KastenT = Convert.ToDouble(txtParameter5.Text);
+                            cc.ErzeugePad(KastenT);
+                            break;
+                        case ("itmKreisring"):
+                            double KreisringR = Convert.ToDouble(txtParameter1.Text);
+                            double Kreisringr = Convert.ToDouble(txtParameter2.Text);
+                            cc.ErzeugeSkizzeKreisring(KreisringR, Kreisringr);
+                            double KreisringT = Convert.ToDouble(txtParameter3.Text);
+                            cc.ErzeugePad(KreisringT);
+                            break;
+                        case ("itmUProfil"):
+                            double UProfilH = Convert.ToDouble(txtParameter1.Text);
+                            double UProfilh = Convert.ToDouble(txtParameter2.Text);
+                            double UProfilB = Convert.ToDouble(txtParameter3.Text);
+                            double UProfilb = Convert.ToDouble(txtParameter4.Text);
+                            cc.ErzeugeSkizzeUProfil(UProfilH, UProfilh, UProfilB, UProfilb);
+                            double UProfilT = Convert.ToDouble(txtParameter5.Text);
+                            cc.ErzeugePad(UProfilT);
+                            break;
+                        case ("itmIProfil"):
+                            double IProfilH = Convert.ToDouble(txtParameter1.Text);
+                            double IProfilh = Convert.ToDouble(txtParameter2.Text);
+                            double IProfilB = Convert.ToDouble(txtParameter3.Text);
+                            double IProfilb = Convert.ToDouble(txtParameter4.Text);
+                            cc.ErzeugeSkizzeIProfil(IProfilH, IProfilh, IProfilB, IProfilb);
+                            double IProfilT = Convert.ToDouble(txtParameter5.Text);
+                            cc.ErzeugePad(IProfilT);
+                            break;
+                    }          
+                }
+                else
+                {
+                    MessageBox.Show("Catia läuft nicht!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception aufgetreten");
+            }
         }
 
         private void PruefeIProfil()
@@ -952,9 +1034,11 @@ namespace B4_Profilberechnung_Obj
             double Preis;
             double Dichte;
 
-           //Prüfen, ob eingegebener Parameter i.O. ist.
-           //Wenn Parameter i.O., dann wird der Wert so abgespeichert
-           //Wenn Parameter n.i.O., dann Fehleranzeige
+            
+
+            //Prüfen, ob eingegebener Parameter i.O. ist.
+            //Wenn Parameter i.O., dann wird der Wert so abgespeichert
+            //Wenn Parameter n.i.O., dann Fehleranzeige
             try
             {
                 RechteckH = Convert.ToDouble(txtParameter1.Text);
@@ -972,7 +1056,7 @@ namespace B4_Profilberechnung_Obj
                 EingabeOK = false;
                 return;
             }
-
+         
             //Prüfen, ob eingegebener Parameter i.O. ist.
             //Wenn Parameter i.O., dann wird der Wert so abgespeichert
             //Wenn Parameter n.i.O., dann Fehleranzeige
@@ -1069,10 +1153,11 @@ namespace B4_Profilberechnung_Obj
                 txtMasse.Text = Convert.ToString(Masse);
                 Preis = Masse * Preis;
                 txtPreis.Text = Convert.ToString(Preis);
-
+                               
             }
             
-        }
+        }               
+
         private new void Hide()
         {
             // versteckt alle Textfelder und Parameterboxen und Bilder
@@ -1334,20 +1419,5 @@ namespace B4_Profilberechnung_Obj
 
        
     }
-
-       // private void itmRechteck_Selected(object sender, RoutedEventArgs e)
-       //  {
-            //  Variante 1
-            //  var ev = e.Source;
-            //  string auswahl1 = ((TreeViewItem)e.Source).Name.ToString();
-
-            // Variante 4 
-            //   var send = sender;
-            //   string auswahl2 = ((TreeViewItem)sender).Name.ToString();
-
-            // hier brauchen Sie die switch/case Abfrage nicht, denn sie wissen schon, dass itmRechteck die Quelle ist
-            // Danke für die Fingerübung!
-       //  }
-
-    }    
+}    
 

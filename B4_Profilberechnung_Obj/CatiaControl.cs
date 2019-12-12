@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace B4_Profilberechnung_Obj
 {
-    class CatiaControl
+     public class CatiaControl
     {
-        CatiaControl()
+        public CatiaControl()
         {
             try
             {
@@ -25,10 +25,11 @@ namespace B4_Profilberechnung_Obj
                     cc.ErstelleLeereSkizze();
 
                     // Generiere ein Profil
+                    cc.ErzeugeProfilSkizze();
 
-
-                    // Extrudiere Balken
-
+                    // Extrudiere 3D Objekt
+                    double Tiefe = 300;
+                    cc.ErzeugePad(Tiefe);
                 }
                 else
                 {

@@ -98,7 +98,7 @@ namespace B4_Profilberechnung_Obj
                     break;
             }
         }
-        private void btnCatia_Click(object sender, RoutedEventArgs e)
+        public void btnCatia_Click(object sender, RoutedEventArgs e)
         {
             new CatiaControl();          
         }
@@ -290,6 +290,7 @@ namespace B4_Profilberechnung_Obj
                 Preis = Volumen * Preis;
                 txtPreis.Text = Convert.ToString(Preis);
             }
+            
         }
         private void PruefeUProfil()
         {
@@ -1070,7 +1071,7 @@ namespace B4_Profilberechnung_Obj
                 txtPreis.Text = Convert.ToString(Preis);
 
             }
-
+            
         }
         private new void Hide()
         {
